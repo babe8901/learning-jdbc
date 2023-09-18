@@ -10,9 +10,8 @@ public class JDBCExecutor {
 
         try {
             Connection connection = dcm.getConnection();
-            OrderDAO orderDAO = new OrderDAO(connection);
-            List<Order> orders = orderDAO.getOrderForCustomer(789);
-            orders.forEach(System.out::println);
+            CustomerDAO customerDAO = new CustomerDAO(connection);
+            customerDAO.findAllSorted(20).forEach(System.out::println);
         } catch (SQLException e) {
             e.printStackTrace();
         }
